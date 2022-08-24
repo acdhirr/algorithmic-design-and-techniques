@@ -43,12 +43,13 @@ object EditDistance {
       val curRow = rowNr +: new Array[Int](t.length)
 
       // loop over all of t
-      // pick corresponding value from prevRow and rowNr
+      // pick corresponding value from prevRow and curRow
       // set curRow values
       for (i <- 1 to t.length) {
         val del = prevRow(i) + 1
         val ins = curRow(i - 1) + 1
         val subs = if (sChar == t(i - 1)) prevRow(i - 1) else prevRow(i - 1) + 1
+        // pick minimum value
         curRow(i) = Set(del, ins, subs).min
       }
 
@@ -58,14 +59,13 @@ object EditDistance {
       curRow.foreach(x => print(s" $x"))
       */
 
-      if (s.tail == "") curRow(t.length)
-      else inner(s.tail, t, curRow, rowNr + 1)
+      if (s.tail == "") curRow(t.length) // we are done, return the last (lower right) element
+      else inner(s.tail, t, curRow, rowNr + 1) // move down a row
     }
 
-    // prepare first row ( 0 1 2
-    // 3 4 5 6 7 etc.)
+    // first call: prepare first row ( 0 1 2 3 4 5 6 7 etc.)
+    // and start at next row
     val prevRow = (0 to t.length).toArray
-    // start at next row
     val rowNr = 1
 
     inner(s, t, prevRow, rowNr)
