@@ -37,6 +37,7 @@ object EditDistance {
   def editDistance(s: String, t: String): Int = {
 
     @tailrec
+    // this will be called recursively for every character of s
     def inner(s: String, t: String, prevRow: Array[Int], rowNr: Int): Int = {
 
       val sChar = s.head

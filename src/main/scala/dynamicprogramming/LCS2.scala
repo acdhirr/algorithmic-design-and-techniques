@@ -34,6 +34,7 @@ object LCS2 {
   def lcs2(s: Array[Long], t: Array[Long]): Int = {
 
     @tailrec
+    // this will be called for every element of s
     def inner(s: Array[Long], t: Array[Long], prevRow: Array[Int]): Int = {
 
       val sChar = s.head
