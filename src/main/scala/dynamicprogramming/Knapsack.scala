@@ -14,6 +14,7 @@ object Knapsack {
     val weights = new Array[Int](n)
     for (i <- 0 until n) weights(i) = scan.nextInt()
 
+    // println( knapsackMemo(0 +: weights, n, w, mutable.HashMap[(Int, Int), Int]()) )
     println( knapsack(weights, n, w) )
   }
 
