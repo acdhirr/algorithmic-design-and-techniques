@@ -64,6 +64,7 @@ object LCS3 {
             else biggestNeighbour
         }
 
+    // right lower rear corner contains answer
     cube(s.length)(t.length)(u.length)
   }
 
